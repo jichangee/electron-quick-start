@@ -1,19 +1,30 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, BrowserView, screen } = require('electron')
 const path = require('path')
 
 function createWindow () {
   // Create the browser window.
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize
+
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width,
+    height,
+    fullscreen: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
+  mainWindow.loadURL('http://121.40.121.76:8091/#/dashboard')
+  // let browserView = new BrowserView();
+  // mainWindow.setBrowserView(browserView);
+  // browserView.setBounds({
+  //   x: 0,
+  //   y: 0
+  // })
+  // browserView.webContents.loadURL('https://www.baidu.com')
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  // mainWindow.loadFile('index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

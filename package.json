@@ -4,7 +4,11 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-packager ./ myapp --out ./OutApp --overwrite",
+    "build:mac": "electron-builder --dir",
+    "build:win": "electron-builder --win",
+    "dist": "pkgbuild --install-location /Applications --component ./dists/MyApp.app ./dists/MyApp.pkg"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +21,8 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^8.2.5"
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0",
+    "electron-packager": "^14.2.1"
   }
 }
